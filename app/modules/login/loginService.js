@@ -5,17 +5,22 @@ var LoginService = function($http){
 
 	this.login = function(data, callback){
 
-  	// console.log(data)
-  	// console.log($http)
-    // something with the data
-    $http.post('/login',data)
-    	.then(function success(){
-    		console.log("success")
-    	}, function error(){
-    		console.log("error")
-    	})
-    // callback();
-  };
+	    // something with the data
+	    $http.post('/login',data)
+	    	.then(function success(res){
+	    		if(res.data){
+	    			console.log(res)
+					console.log("correct pw")
+					callback(res.data)
+	    		}else{
+	    			console.log(res)
+	    			console.log("incorrect pw")
+	    		}
+	    	}, function error(err){
+	    		console.log("error")
+	    	})
+	    // callback();
+	};
 };
 
 angular

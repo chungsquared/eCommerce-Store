@@ -5,7 +5,8 @@ angular.module('myApp', [
 	'ui.router',
 	'login',
 	'reg',
-	'ngFlash'
+	'ngFlash',
+	'adminDash',
 ])
 
 .config([

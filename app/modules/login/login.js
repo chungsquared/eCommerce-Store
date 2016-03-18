@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 
-var LoginCtrl = function($state, LoginService){
+var LoginCtrl = function($state, LoginService, UserData){
 	// since we declared controllerAs in our config, we can use this. rather than $scope.
 	// because each instance has its own ctrl
 	this.userLogin = function(){
@@ -9,9 +9,11 @@ var LoginCtrl = function($state, LoginService){
 			username:this.username,
 			password: this.password,
 		}
-		LoginService.login(data,function(){
-			// UserData.name = data.name; //sets UserData Constant Service
-			// $state.go('activityFeed'); //reroutes to activityFeed
+		console.log(data)
+		LoginService.login(data,function(user){
+			console.log(user)
+			UserData.name = user.firstName; //sets UserData Constant Service
+			$state.go('adminDash'); //reroutes to the Admin Dashboard
 		})
 	}
 }
@@ -30,6 +32,7 @@ angular
 	.controller('LoginCtrl',[
 		'$state',
 		'LoginService',
+		'UserData',
 		LoginCtrl
 	]);
 })();

@@ -38,6 +38,32 @@ module.exports = (function(){
 				}
 			})
 		},
+		login: function(req,res){
+			User.find({"username":req.body.username},function(err, user){
+				if(err){
+					res.json(err)
+				}else{
+					if(user.length < 1){ 
+						console.log("This username does not exist")
+					}else{ //username has been found
+						//compare pw
+						bcrypt.compare(req.body.password, user[0].password,function(error,result){
+							console.log(result)
+							if(error){
+								console.log("there was an error matching passwords. Please try again")
+								res.json(error)
+							}
+							if(result){
+								res.json(user[0]) //password matched, user authenticated
+							}else {
+								res.json(result) //password did not match
+							}
+							
+						})
+					}
+				}
+			})
+		}
 
 		// show: function (req, res){
 		// 	Customer.find({}, function(err, customers){
