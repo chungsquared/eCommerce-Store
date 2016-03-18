@@ -1,0 +1,12 @@
+<div class="container">
+	<h1>Login Here</h1>
+	<form action="">
+		<input type="text" placeholder="Username" ng-model='login.username' >
+		<input type="password" placeholder="Password" ng-model='login.password'>
+		<input type="submit" class="btn btn-primary" ng-click='login.userLogin()' value='Login'>
+	</form>
+
+	<p>No Account? Click<a href="#/register"> here</a> to register</p>
+
+	<flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash);"></flash-message> 
+</div>

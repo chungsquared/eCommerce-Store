@@ -2,7 +2,10 @@
 'use strict';
 
 angular.module('myApp', [
-	'ui.router'
+	'ui.router',
+	'login',
+	'reg',
+	'ngFlash'
 ])
 
 .config([

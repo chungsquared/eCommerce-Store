@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var fs = require('fs');
-mongoose.connect('mongodb://localhost/orders_and_customers_1');
+mongoose.connect('mongodb://localhost/MEAN-Store');
 
 var models_path = __dirname + '/../server/models'
 
